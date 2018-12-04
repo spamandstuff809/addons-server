@@ -20,7 +20,7 @@ def install_button(context, addon, version=None,
     app, lang = context['APP'], context['LANG']
     src = src or context.get('src') or request.GET.get('src', '')
     collection = (
-        (collection.uuid.hex if hasattr(collection, 'uuid') else None) or
+        (collection.uuid if hasattr(collection, 'uuid') else None) or
         collection or
         context.get('collection') or
         request.GET.get('collection') or
