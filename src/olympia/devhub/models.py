@@ -1,3 +1,5 @@
+import uuid
+
 from datetime import datetime
 
 from django.db import models
@@ -15,7 +17,9 @@ log = olympia.core.logger.getLogger('devhub')
 
 class RssKey(models.Model):
     id = PositiveAutoField(primary_key=True)
-    key = models.UUIDField(db_column='rsskey', unique=True, null=True)
+    key = models.UUIDField(
+        db_column='rsskey', unique=True, null=True,
+        default=uuid.uuid4)
     addon = models.ForeignKey(Addon, null=True, unique=True)
     user = models.ForeignKey(UserProfile, null=True, unique=True)
     created = models.DateField(default=datetime.now)
