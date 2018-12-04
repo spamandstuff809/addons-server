@@ -83,7 +83,7 @@ class Collection(ModelBase):
     id = PositiveAutoField(primary_key=True)
     TYPE_CHOICES = amo.COLLECTION_CHOICES.items()
 
-    uuid = models.UUIDField(blank=True, unique=True)
+    uuid = models.UUIDField(blank=True, unique=True, null=True)
     name = TranslatedField(require_locale=False)
     # nickname is deprecated.  Use slug.
     nickname = models.CharField(max_length=30, blank=True, unique=True,
